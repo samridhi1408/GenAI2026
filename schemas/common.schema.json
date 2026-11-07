@@ -1,0 +1,321 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:bioloopbench:schema:common",
+  "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]*$"
+    },
+    "text": {
+      "type": "string",
+      "minLength": 1
+    },
+    "action": {
+      "type": "object",
+      "properties": {
+        "action_id": {
+          "$ref": "urn:bioloopbench:schema:common#/$defs/id"
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "action_id",
+        "description"
+      ],
+      "additionalProperties": false
+    },
+    "budget": {
+      "type": "object",
+      "properties": {
+        "max_diagnostic_actions": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "Diagnostic-action limit. Null records an unresolved authoring value and blocks repository readiness validation."
+        }
+      },
+      "required": [
+        "max_diagnostic_actions"
+      ],
+      "additionalProperties": false
+    },
+    "remaining_budget": {
+      "type": "object",
+      "properties": {
+        "diagnostic_actions": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "diagnostic_actions"
+      ],
+      "additionalProperties": false
+    },
+    "hypothesis": {
+      "type": "object",
+      "properties": {
+        "hypothesis_id": {
+          "$ref": "urn:bioloopbench:schema:common#/$defs/id"
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "rank": {
+          "type": "integer",
+          "enum": [
+            1,
+            2,
+            3
+          ]
+        }
+      },
+      "required": [
+        "hypothesis_id",
+        "description",
+        "rank"
+      ],
+      "additionalProperties": false
+    },
+    "action_request": {
+      "type": "object",
+      "properties": {
+        "action_id": {
+          "$ref": "urn:bioloopbench:schema:common#/$defs/id"
+        },
+        "parameters": {
+          "type": "object"
+        }
+      },
+      "required": [
+        "action_id"
+      ],
+      "additionalProperties": false
+    },
+    "observation": {
+      "type": "object",
+      "properties": {
+        "observation_id": {
+          "$ref": "urn:bioloopbench:schema:common#/$defs/id"
+        },
+        "content": {
+          "type": [
+            "string",
+            "object"
+          ]
+        },
+        "source": {
+          "const": "environment"
+        }
+      },
+      "required": [
+        "observation_id",
+        "content",
+        "source"
+      ],
+      "additionalProperties": false,
+      "description": "Environment-populated experimental result for the selected action and active hidden instance.",
+      "readOnly": true,
+      "x-populated-by": "environment"
+    },
+    "final": {
+      "type": "object",
+      "properties": {
+        "explanation": {
+          "type": "string",
+          "minLength": 1
+        },
+        "diagnosis": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence_ids": {
+          "type": "array",
+          "items": {
+            "$ref": "urn:bioloopbench:schema:common#/$defs/id"
+          },
+          "minItems": 0,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "diagnosis",
+        "evidence_ids"
+      ],
+      "additionalProperties": false
+    },
+    "curation": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "enum": [
+            "draft",
+            "in_review",
+            "approved"
+          ]
+        },
+        "reviewer": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "reviewed_on": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date"
+        },
+        "notes": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "status",
+        "reviewer",
+        "reviewed_on",
+        "notes"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "approved"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "reviewer": {
+                "type": "string",
+                "minLength": 1
+              },
+              "reviewed_on": {
+                "type": "string",
+                "format": "date"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "ranked_hypotheses": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "description": "Exactly three agent-generated hypotheses, ordered from rank 1 (most likely) to rank 3 (third most likely).",
+      "prefixItems": [
+        {
+          "allOf": [
+            {
+              "$ref": "urn:bioloopbench:schema:common#/$defs/hypothesis"
+            },
+            {
+              "properties": {
+                "rank": {
+                  "const": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            {
+              "$ref": "urn:bioloopbench:schema:common#/$defs/hypothesis"
+            },
+            {
+              "properties": {
+                "rank": {
+                  "const": 2
+                }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            {
+              "$ref": "urn:bioloopbench:schema:common#/$defs/hypothesis"
+            },
+            {
+              "properties": {
+                "rank": {
+                  "const": 3
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "items": false
+    },
+    "agent_before_action": {
+      "type": "object",
+      "properties": {
+        "hypotheses_before": {
+          "$ref": "urn:bioloopbench:schema:common#/$defs/ranked_hypotheses"
+        },
+        "action": {
+          "$ref": "urn:bioloopbench:schema:common#/$defs/action_request"
+        }
+      },
+      "required": [
+        "hypotheses_before",
+        "action"
+      ],
+      "additionalProperties": false
+    },
+    "agent_after_observation": {
+      "type": "object",
+      "properties": {
+        "hypotheses_after": {
+          "$ref": "urn:bioloopbench:schema:common#/$defs/ranked_hypotheses"
+        },
+        "revision_summary": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence_ids": {
+          "type": "array",
+          "items": {
+            "$ref": "urn:bioloopbench:schema:common#/$defs/id"
+          },
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "hypotheses_after",
+        "revision_summary",
+        "evidence_ids"
+      ],
+      "additionalProperties": false
+    },
+    "environment_feedback": {
+      "type": "object",
+      "properties": {
+        "observation": {
+          "$ref": "urn:bioloopbench:schema:common#/$defs/observation"
+        },
+        "remaining_budget": {
+          "$ref": "urn:bioloopbench:schema:common#/$defs/remaining_budget"
+        }
+      },
+      "required": [
+        "observation",
+        "remaining_budget"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

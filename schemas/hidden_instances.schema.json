@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:bioloopbench:schema:hidden_instances",
+  "type": "object",
+  "properties": {
+    "record_type": {
+      "const": "hidden_instances"
+    },
+    "schema_version": {
+      "const": "0.2.0"
+    },
+    "instances": {
+      "type": "array",
+      "items": {
+        "$ref": "urn:bioloopbench:schema:hidden_instance"
+      },
+      "minItems": 1
+    }
+  },
+  "required": [
+    "record_type",
+    "schema_version",
+    "instances"
+  ],
+  "additionalProperties": false
+}

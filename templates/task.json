@@ -1,0 +1,46 @@
+{
+  "record_type": "task",
+  "schema_version": "0.2.0",
+  "task_id": "task_001",
+  "task_version": "0.2.0",
+  "family_id": "family_001",
+  "goal": "TBD",
+  "protocol_context": "TBD",
+  "observed_failure": "TBD",
+  "allowed_actions": [
+    {
+      "action_id": "diagnostic_action_1",
+      "description": "TBD"
+    }
+  ],
+  "budget": {
+    "max_diagnostic_actions": 1
+  },
+  "assumptions": [],
+  "required_output": {
+    "per_round_fields": [
+      "hypotheses_before",
+      "action",
+      "hypotheses_after",
+      "revision_summary",
+      "evidence_ids"
+    ],
+    "final_fields": [
+      "diagnosis",
+      "evidence_ids",
+      "explanation"
+    ],
+    "hypothesis_format": {
+      "representation": "ranked",
+      "count": 3,
+      "source": "agent_generated"
+    }
+  },
+  "environment_output": {
+    "per_round_fields": [
+      "round_index",
+      "observation",
+      "remaining_budget"
+    ]
+  }
+}

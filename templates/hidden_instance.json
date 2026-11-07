@@ -1,0 +1,29 @@
+{
+  "record_type": "hidden_instance",
+  "schema_version": "0.2.0",
+  "instance_id": "instance_001",
+  "instance_version": "0.1.0",
+  "task_id": "task_001",
+  "task_version": "0.2.0",
+  "split": "development",
+  "scenario_group_id": "scenario_group_001",
+  "ground_truth": {
+    "hidden_state_ids": [
+      "hidden_state_A"
+    ],
+    "diagnosis": "TBD"
+  },
+  "simulator": {
+    "kind": "unspecified",
+    "definition_ref": null
+  },
+  "provenance_ids": [
+    "provenance_001"
+  ],
+  "curation": {
+    "status": "draft",
+    "reviewer": null,
+    "reviewed_on": null,
+    "notes": ""
+  }
+}

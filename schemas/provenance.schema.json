@@ -1,0 +1,202 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:bioloopbench:schema:provenance",
+  "type": "object",
+  "properties": {
+    "record_type": {
+      "const": "provenance"
+    },
+    "schema_version": {
+      "const": "0.2.0"
+    },
+    "provenance_id": {
+      "$ref": "urn:bioloopbench:schema:common#/$defs/id"
+    },
+    "task_id": {
+      "$ref": "urn:bioloopbench:schema:common#/$defs/id"
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "source_id": {
+            "$ref": "urn:bioloopbench:schema:common#/$defs/id"
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1
+          },
+          "url": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "uri"
+          },
+          "authors": {
+            "type": "string",
+            "minLength": 1
+          },
+          "year": {
+            "type": "integer"
+          },
+          "doi": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "source_id",
+          "title",
+          "url"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0
+    },
+    "construction_notes": {
+      "type": "string",
+      "minLength": 1
+    },
+    "leakage_controls": {
+      "type": "object",
+      "properties": {
+        "synthetic_scenario": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "source_use_notes": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_lookup_policy": {
+          "enum": [
+            "unspecified",
+            "blocked",
+            "general_reference_only",
+            "allowed"
+          ]
+        },
+        "checks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "check": {
+                "type": "string",
+                "minLength": 1
+              },
+              "status": {
+                "enum": [
+                  "planned",
+                  "passed",
+                  "failed"
+                ]
+              },
+              "notes": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "check",
+              "status",
+              "notes"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 0
+        }
+      },
+      "required": [
+        "synthetic_scenario",
+        "source_use_notes",
+        "source_lookup_policy",
+        "checks"
+      ],
+      "additionalProperties": false
+    },
+    "curation": {
+      "$ref": "urn:bioloopbench:schema:common#/$defs/curation"
+    },
+    "instance_notes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 0
+    },
+    "action_evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "action_id": {
+            "$ref": "urn:bioloopbench:schema:common#/$defs/id"
+          },
+          "interpretation": {
+            "type": "string",
+            "minLength": 1
+          },
+          "evidence_strength": {
+            "type": "string",
+            "minLength": 1
+          },
+          "evidence_strength_description": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_ids": {
+            "type": "array",
+            "items": {
+              "$ref": "urn:bioloopbench:schema:common#/$defs/id"
+            },
+            "minItems": 0
+          },
+          "caveats": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          }
+        },
+        "required": [
+          "action_id",
+          "interpretation",
+          "evidence_strength",
+          "evidence_strength_description",
+          "source_ids",
+          "caveats"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0
+    },
+    "evidence_integration_notes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 0
+    }
+  },
+  "required": [
+    "record_type",
+    "schema_version",
+    "provenance_id",
+    "task_id",
+    "sources",
+    "construction_notes",
+    "leakage_controls",
+    "curation"
+  ],
+  "additionalProperties": false
+}

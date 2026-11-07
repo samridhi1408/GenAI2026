@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:bioloopbench:schema:simulator_lookup",
+  "type": "object",
+  "properties": {
+    "record_type": {
+      "const": "simulator_lookup"
+    },
+    "schema_version": {
+      "const": "0.2.0"
+    },
+    "simulator_id": {
+      "$ref": "urn:bioloopbench:schema:common#/$defs/id"
+    },
+    "task_id": {
+      "$ref": "urn:bioloopbench:schema:common#/$defs/id"
+    },
+    "task_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "deterministic": {
+      "const": true
+    },
+    "action_results": {
+      "type": "object",
+      "minProperties": 1,
+      "propertyNames": {
+        "$ref": "urn:bioloopbench:schema:common#/$defs/id"
+      },
+      "additionalProperties": {
+        "type": "object",
+        "minProperties": 1,
+        "propertyNames": {
+          "$ref": "urn:bioloopbench:schema:common#/$defs/id"
+        },
+        "additionalProperties": {
+          "type": "object",
+          "properties": {
+            "observation": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "observation"
+          ],
+          "additionalProperties": false
+        }
+      }
+    }
+  },
+  "required": [
+    "record_type",
+    "schema_version",
+    "simulator_id",
+    "task_id",
+    "task_version",
+    "deterministic",
+    "action_results"
+  ],
+  "additionalProperties": false
+}

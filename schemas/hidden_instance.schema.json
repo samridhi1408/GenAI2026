@@ -1,0 +1,109 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:bioloopbench:schema:hidden_instance",
+  "type": "object",
+  "properties": {
+    "record_type": {
+      "const": "hidden_instance"
+    },
+    "schema_version": {
+      "const": "0.2.0"
+    },
+    "instance_id": {
+      "$ref": "urn:bioloopbench:schema:common#/$defs/id"
+    },
+    "instance_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "task_id": {
+      "$ref": "urn:bioloopbench:schema:common#/$defs/id"
+    },
+    "task_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "split": {
+      "enum": [
+        "development",
+        "validation",
+        "test"
+      ]
+    },
+    "scenario_group_id": {
+      "$ref": "urn:bioloopbench:schema:common#/$defs/id"
+    },
+    "ground_truth": {
+      "type": "object",
+      "properties": {
+        "hidden_state_ids": {
+          "type": "array",
+          "items": {
+            "$ref": "urn:bioloopbench:schema:common#/$defs/id"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "diagnosis": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "hidden_state_ids",
+        "diagnosis"
+      ],
+      "additionalProperties": false
+    },
+    "simulator": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "enum": [
+            "unspecified",
+            "lookup",
+            "state_machine"
+          ]
+        },
+        "definition_ref": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        }
+      },
+      "required": [
+        "kind",
+        "definition_ref"
+      ],
+      "additionalProperties": false
+    },
+    "provenance_ids": {
+      "type": "array",
+      "items": {
+        "$ref": "urn:bioloopbench:schema:common#/$defs/id"
+      },
+      "minItems": 0,
+      "uniqueItems": true
+    },
+    "curation": {
+      "$ref": "urn:bioloopbench:schema:common#/$defs/curation"
+    }
+  },
+  "required": [
+    "record_type",
+    "schema_version",
+    "instance_id",
+    "instance_version",
+    "task_id",
+    "task_version",
+    "split",
+    "scenario_group_id",
+    "ground_truth",
+    "simulator",
+    "provenance_ids",
+    "curation"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,185 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:bioloopbench:schema:trajectory",
+  "type": "object",
+  "properties": {
+    "record_type": {
+      "const": "trajectory"
+    },
+    "schema_version": {
+      "const": "0.2.0"
+    },
+    "run_id": {
+      "$ref": "urn:bioloopbench:schema:common#/$defs/id"
+    },
+    "task_id": {
+      "$ref": "urn:bioloopbench:schema:common#/$defs/id"
+    },
+    "task_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "instance_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]*$"
+    },
+    "status": {
+      "enum": [
+        "draft",
+        "completed",
+        "aborted"
+      ]
+    },
+    "rounds": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "round_index": {
+            "type": "integer",
+            "minimum": 1,
+            "x-populated-by": "environment"
+          },
+          "hypotheses_before": {
+            "$ref": "urn:bioloopbench:schema:common#/$defs/ranked_hypotheses",
+            "x-populated-by": "agent"
+          },
+          "action": {
+            "$ref": "urn:bioloopbench:schema:common#/$defs/action_request",
+            "x-populated-by": "agent"
+          },
+          "observation": {
+            "$ref": "urn:bioloopbench:schema:common#/$defs/observation",
+            "x-populated-by": "environment",
+            "readOnly": true
+          },
+          "hypotheses_after": {
+            "$ref": "urn:bioloopbench:schema:common#/$defs/ranked_hypotheses",
+            "x-populated-by": "agent"
+          },
+          "revision_summary": {
+            "type": "string",
+            "minLength": 1,
+            "x-populated-by": "agent"
+          },
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "$ref": "urn:bioloopbench:schema:common#/$defs/id"
+            },
+            "minItems": 0,
+            "uniqueItems": true,
+            "x-populated-by": "agent"
+          },
+          "remaining_budget": {
+            "$ref": "urn:bioloopbench:schema:common#/$defs/remaining_budget",
+            "x-populated-by": "environment"
+          }
+        },
+        "required": [
+          "round_index",
+          "hypotheses_before",
+          "action",
+          "observation",
+          "hypotheses_after",
+          "revision_summary",
+          "evidence_ids",
+          "remaining_budget"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0,
+      "description": "Combined agent submissions and trusted environment feedback; assembled by the environment/logger."
+    },
+    "final": {
+      "anyOf": [
+        {
+          "$ref": "urn:bioloopbench:schema:common#/$defs/final"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "x-populated-by": "agent"
+    },
+    "pending_round": {
+      "description": "An action and its environment feedback awaiting the agent revision.",
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "round_index": {
+              "type": "integer",
+              "minimum": 1,
+              "x-populated-by": "environment"
+            },
+            "hypotheses_before": {
+              "$ref": "urn:bioloopbench:schema:common#/$defs/ranked_hypotheses",
+              "x-populated-by": "agent"
+            },
+            "action": {
+              "$ref": "urn:bioloopbench:schema:common#/$defs/action_request",
+              "x-populated-by": "agent"
+            },
+            "observation": {
+              "$ref": "urn:bioloopbench:schema:common#/$defs/observation",
+              "x-populated-by": "environment",
+              "readOnly": true
+            },
+            "remaining_budget": {
+              "$ref": "urn:bioloopbench:schema:common#/$defs/remaining_budget",
+              "x-populated-by": "environment"
+            }
+          },
+          "required": [
+            "round_index",
+            "hypotheses_before",
+            "action",
+            "observation",
+            "remaining_budget"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    }
+  },
+  "required": [
+    "record_type",
+    "schema_version",
+    "run_id",
+    "task_id",
+    "task_version",
+    "instance_id",
+    "status",
+    "rounds",
+    "final"
+  ],
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "completed"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "final": {
+            "$ref": "urn:bioloopbench:schema:common#/$defs/final"
+          },
+          "pending_round": {
+            "type": "null"
+          }
+        }
+      }
+    }
+  ]
+}

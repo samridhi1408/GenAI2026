@@ -1,0 +1,58 @@
+{
+  "record_type": "task",
+  "schema_version": "0.2.0",
+  "task_id": "task_001",
+  "task_version": "0.2.0",
+  "family_id": "molecular_cloning",
+  "goal": "Diagnose the cause of an abnormal bacterial transformation outcome.",
+  "protocol_context": "A molecular cloning experiment is assessed by bacterial transformation.",
+  "observed_failure": "Colonies are obtained after transformation, but the colony pattern is inconsistent with the expected cloning outcome.",
+  "allowed_actions": [
+    {
+      "action_id": "D1",
+      "description": "Intact-plasmid transformation control"
+    },
+    {
+      "action_id": "D2",
+      "description": "No-insert / vector-only control"
+    },
+    {
+      "action_id": "D3",
+      "description": "Colony PCR for insert presence"
+    },
+    {
+      "action_id": "D4",
+      "description": "Diagnostic restriction digest of recovered plasmid"
+    }
+  ],
+  "budget": {
+    "max_diagnostic_actions": 3
+  },
+  "required_output": {
+    "per_round_fields": [
+      "hypotheses_before",
+      "action",
+      "hypotheses_after",
+      "revision_summary",
+      "evidence_ids"
+    ],
+    "final_fields": [
+      "diagnosis",
+      "evidence_ids",
+      "explanation"
+    ],
+    "hypothesis_format": {
+      "representation": "ranked",
+      "count": 3,
+      "source": "agent_generated"
+    }
+  },
+  "environment_output": {
+    "per_round_fields": [
+      "round_index",
+      "observation",
+      "remaining_budget"
+    ]
+  },
+  "allow_repeated_actions": true
+}

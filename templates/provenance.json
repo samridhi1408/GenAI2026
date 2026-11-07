@@ -1,0 +1,20 @@
+{
+  "record_type": "provenance",
+  "schema_version": "0.2.0",
+  "provenance_id": "provenance_001",
+  "task_id": "task_001",
+  "sources": [],
+  "construction_notes": "TBD: record the relationships supported by sources and how the scenario was authored.",
+  "leakage_controls": {
+    "synthetic_scenario": null,
+    "source_use_notes": "TBD",
+    "source_lookup_policy": "unspecified",
+    "checks": []
+  },
+  "curation": {
+    "status": "draft",
+    "reviewer": null,
+    "reviewed_on": null,
+    "notes": ""
+  }
+}

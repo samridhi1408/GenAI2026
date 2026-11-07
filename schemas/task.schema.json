@@ -1,0 +1,140 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:bioloopbench:schema:task",
+  "type": "object",
+  "properties": {
+    "record_type": {
+      "const": "task"
+    },
+    "schema_version": {
+      "const": "0.2.0"
+    },
+    "task_id": {
+      "$ref": "urn:bioloopbench:schema:common#/$defs/id"
+    },
+    "task_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "family_id": {
+      "$ref": "urn:bioloopbench:schema:common#/$defs/id"
+    },
+    "goal": {
+      "type": "string",
+      "minLength": 1
+    },
+    "protocol_context": {
+      "type": "string",
+      "minLength": 1
+    },
+    "observed_failure": {
+      "type": "string",
+      "minLength": 1
+    },
+    "allowed_actions": {
+      "type": "array",
+      "items": {
+        "$ref": "urn:bioloopbench:schema:common#/$defs/action"
+      },
+      "minItems": 1
+    },
+    "budget": {
+      "$ref": "urn:bioloopbench:schema:common#/$defs/budget"
+    },
+    "assumptions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 0
+    },
+    "required_output": {
+      "type": "object",
+      "properties": {
+        "per_round_fields": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "hypotheses_before",
+              "action",
+              "hypotheses_after",
+              "revision_summary",
+              "evidence_ids"
+            ]
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "final_fields": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1
+        },
+        "hypothesis_format": {
+          "type": "object",
+          "properties": {
+            "representation": {
+              "const": "ranked"
+            },
+            "count": {
+              "const": 3
+            },
+            "source": {
+              "const": "agent_generated"
+            }
+          },
+          "required": [
+            "representation",
+            "count",
+            "source"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "per_round_fields",
+        "final_fields"
+      ],
+      "additionalProperties": false,
+      "description": "Fields authored by the agent; excludes environment-generated feedback and bookkeeping."
+    },
+    "environment_output": {
+      "type": "object",
+      "properties": {
+        "per_round_fields": {
+          "const": [
+            "round_index",
+            "observation",
+            "remaining_budget"
+          ]
+        }
+      },
+      "required": [
+        "per_round_fields"
+      ],
+      "additionalProperties": false,
+      "description": "Fields populated by the environment when assembling the trajectory."
+    },
+    "allow_repeated_actions": {
+      "type": "boolean",
+      "description": "Whether an agent may select an already performed diagnostic action. Every selection consumes one diagnostic action."
+    }
+  },
+  "required": [
+    "record_type",
+    "schema_version",
+    "task_id",
+    "task_version",
+    "family_id",
+    "goal",
+    "protocol_context",
+    "observed_failure",
+    "allowed_actions",
+    "budget"
+  ],
+  "additionalProperties": false
+}

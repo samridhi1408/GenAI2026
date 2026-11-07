@@ -1,0 +1,11 @@
+__pycache__/
+*.py[cod]
+.venv/
+runs/
+hidden/**
+!hidden/README.md
+simulator/private/
+evaluation/private/
+test_set/**
+!test_set/README.md
+.DS_Store

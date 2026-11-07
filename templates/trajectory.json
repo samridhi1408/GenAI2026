@@ -1,0 +1,11 @@
+{
+  "record_type": "trajectory",
+  "schema_version": "0.2.0",
+  "run_id": "run_001",
+  "task_id": "task_001",
+  "task_version": "0.2.0",
+  "instance_id": "instance_001",
+  "status": "draft",
+  "rounds": [],
+  "final": null
+}

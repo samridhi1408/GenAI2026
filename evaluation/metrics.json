@@ -1,0 +1,40 @@
+{
+  "metrics": [
+    {
+      "name": "final_diagnosis_accuracy",
+      "description": "Whether the final diagnosis matches the curated ground truth."
+    },
+    {
+      "name": "recovery_at_k",
+      "description": "Correct diagnosis within K diagnostic actions."
+    },
+    {
+      "name": "experiments_to_recovery",
+      "description": "Number of diagnostic actions required for a correct diagnosis."
+    },
+    {
+      "name": "hypothesis_revision_accuracy",
+      "description": "Appropriateness of rank changes after evidence: supported hypotheses move upward and contradicted hypotheses move downward."
+    },
+    {
+      "name": "anchoring_rate",
+      "description": "Persistence of an initially top-ranked incorrect hypothesis despite contradictory evidence."
+    },
+    {
+      "name": "feedback_sensitivity",
+      "description": "Changes in hypothesis rankings and action choices across feedback conditions."
+    },
+    {
+      "name": "hallucination_rate",
+      "description": "Unsupported biological explanations or causal claims."
+    },
+    {
+      "name": "unnecessary_experiment_rate",
+      "description": "Diagnostic actions that provide little useful information."
+    },
+    {
+      "name": "diagnostic_efficiency",
+      "description": "Useful uncertainty reduction within the diagnostic budget."
+    }
+  ]
+}

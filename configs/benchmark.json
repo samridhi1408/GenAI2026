@@ -1,0 +1,10 @@
+{
+  "benchmark_name": "BioLoopBench",
+  "schema_version": "0.2.0",
+  "paths": {
+    "public_tasks": "tasks",
+    "hidden_records": "hidden",
+    "held_out_records": "test_set",
+    "local_trajectories": "runs"
+  }
+}
