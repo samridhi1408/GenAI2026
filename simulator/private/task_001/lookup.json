@@ -1,0 +1,24 @@
+{
+  "record_type": "simulator_lookup",
+  "schema_version": "0.2.0",
+  "simulator_id": "simulator_001",
+  "task_id": "task_001",
+  "task_version": "0.2.0",
+  "deterministic": true,
+  "action_results": {
+    "SELF_LIGATED_VECTOR": {
+      "D1": {
+        "observation": "The intact-plasmid positive control produces expected colony growth."
+      },
+      "D2": {
+        "observation": "Colonies are recovered from the vector-only control."
+      },
+      "D3": {
+        "observation": "Screened colonies do not show the expected insert-containing PCR product."
+      },
+      "D4": {
+        "observation": "The recovered plasmid shows a restriction pattern consistent with empty vector rather than the expected recombinant construct."
+      }
+    }
+  }
+}

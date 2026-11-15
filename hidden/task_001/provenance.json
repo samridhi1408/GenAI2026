@@ -1,0 +1,257 @@
+{
+  "record_type": "provenance",
+  "schema_version": "0.2.0",
+  "provenance_id": "provenance_001",
+  "task_id": "task_001",
+  "sources": [
+    {
+      "source_id": "FISCHER_2018",
+      "authors": "Fischer, Mgboji & Liu",
+      "year": 2018,
+      "title": "Pyrite cloning: a single tube and programmed reaction cloning with restriction enzymes.",
+      "doi": "10.1186/s13007-018-0359-7",
+      "url": "https://doi.org/10.1186/s13007-018-0359-7"
+    },
+    {
+      "source_id": "TROWER_2003",
+      "authors": "Trower",
+      "year": 1996,
+      "title": "A rapid PCR-based colony screening protocol for cloned inserts.",
+      "doi": "10.1385/0-89603-402-x:329",
+      "url": "https://doi.org/10.1385/0-89603-402-x:329"
+    },
+    {
+      "source_id": "SANDHU_1989",
+      "authors": "Sandhu, Precup & Kline",
+      "year": 1989,
+      "title": "Rapid one-step characterization of recombinant vectors by direct analysis of transformed Escherichia coli colonies.",
+      "doi": null,
+      "url": "https://pubmed.ncbi.nlm.nih.gov/2517212/"
+    },
+    {
+      "source_id": "PETERSON_1998",
+      "authors": "Peterson",
+      "year": 1998,
+      "title": "Screening of recombinant DNA clones by single-colony micro-lysate/restriction enzyme analysis.",
+      "doi": "10.2144/98251bm04",
+      "url": "https://doi.org/10.2144/98251bm04"
+    },
+    {
+      "source_id": "GREEN_SAMBROOK_2019_PCR",
+      "authors": "Green & Sambrook",
+      "year": 2019,
+      "title": "Screening Colonies by Polymerase Chain Reaction (PCR).",
+      "doi": "10.1101/pdb.prot095224",
+      "url": "https://doi.org/10.1101/pdb.prot095224"
+    },
+    {
+      "source_id": "GREEN_SAMBROOK_2020_INOUE",
+      "authors": "Green & Sambrook",
+      "year": 2020,
+      "title": "The Inoue Method for Preparation and Transformation of Competent Escherichia coli: \"Ultracompetent\" Cells.",
+      "doi": "10.1101/pdb.prot101196",
+      "url": "https://doi.org/10.1101/pdb.prot101196"
+    },
+    {
+      "source_id": "LIU_2018",
+      "authors": "Liu et al.",
+      "year": 2018,
+      "title": "An Improved Method of Preparing High Efficiency Transformation Escherichia coli with Both Plasmids and Larger DNA Fragments.",
+      "doi": "10.1007/s12088-018-0743-z",
+      "url": "https://doi.org/10.1007/s12088-018-0743-z"
+    },
+    {
+      "source_id": "WANG_2020",
+      "authors": "Wang et al.",
+      "year": 2020,
+      "title": "Effects of Sr2+ on the preparation of Escherichia coli DH5α competent cells and plasmid transformation.",
+      "doi": "10.7717/peerj.9480",
+      "url": "https://doi.org/10.7717/peerj.9480"
+    },
+    {
+      "source_id": "POPE_KENT_1996",
+      "authors": "Pope & Kent",
+      "year": 1996,
+      "title": "High efficiency 5 min transformation of Escherichia coli.",
+      "doi": "10.1093/nar/24.3.536",
+      "url": "https://doi.org/10.1093/nar/24.3.536"
+    },
+    {
+      "source_id": "CRONAN_1988",
+      "authors": "Cronan, Narasimhan & Rawlings",
+      "year": 1988,
+      "title": "Insertional restoration of β-galactosidase α-complementation (white-to-blue colony screening) facilitates assembly of synthetic genes.",
+      "doi": "10.1016/0378-1119(88)90114-x",
+      "url": "https://doi.org/10.1016/0378-1119(88)90114-x"
+    },
+    {
+      "source_id": "MIZUTANI_2024",
+      "authors": "Mizutani et al.",
+      "year": 2025,
+      "title": "Robust and highly efficient transformation method for a minimal mycoplasma cell.",
+      "doi": "10.1128/jb.00415-24",
+      "url": "https://doi.org/10.1128/jb.00415-24"
+    },
+    {
+      "source_id": "ROTCHANAPREEDA_2018",
+      "authors": "Rotchanapreeda et al.",
+      "year": 2018,
+      "title": "The plasmid vectors, pBS2ndd and pBS3ndd, for versatile cloning with low background in Escherichia coli.",
+      "doi": "10.1007/s11274-018-2466-z",
+      "url": "https://doi.org/10.1007/s11274-018-2466-z"
+    },
+    {
+      "source_id": "HANAHAN_1983",
+      "authors": "Hanahan",
+      "year": 1983,
+      "title": "Studies on transformation of Escherichia coli with plasmids.",
+      "doi": "10.1016/s0022-2836(83)80284-8",
+      "url": "https://doi.org/10.1016/s0022-2836(83)80284-8"
+    },
+    {
+      "source_id": "GREEN_SAMBROOK_2019_XGAL",
+      "authors": "Green & Sambrook",
+      "year": 2019,
+      "title": "Screening Bacterial Colonies Using X-Gal and IPTG: α-Complementation.",
+      "doi": "10.1101/pdb.prot101329",
+      "url": "https://doi.org/10.1101/pdb.prot101329"
+    },
+    {
+      "source_id": "CHAN_2013",
+      "authors": "Chan et al.",
+      "year": 2013,
+      "title": "A comparison and optimization of methods and factors affecting the transformation of Escherichia coli.",
+      "doi": "10.1042/bsr20130098",
+      "url": "https://doi.org/10.1042/bsr20130098"
+    },
+    {
+      "source_id": "PADMANABHAN_2011",
+      "authors": "Padmanabhan, Banerjee & Mandi",
+      "year": 2011,
+      "title": "Screening of Bacterial Recombinants: Strategies and Preventing False Positives.",
+      "doi": "10.5772/22140",
+      "url": "https://doi.org/10.5772/22140"
+    },
+    {
+      "source_id": "CHEN_2024",
+      "authors": "Chen et al.",
+      "year": 2024,
+      "title": "Role of cspA on the Preparation of Escherichia coli Competent Cells by Calcium Chloride Method.",
+      "doi": "10.1002/jobm.202400113",
+      "url": "https://doi.org/10.1002/jobm.202400113"
+    },
+    {
+      "source_id": "YANG_2022",
+      "authors": "Yang et al.",
+      "year": 2022,
+      "title": "Escherichia coli BW25113 Competent Cells Prepared Using a Simple Chemical Method Have Unmatched Transformation and Cloning Efficiencies.",
+      "doi": "10.3389/fmicb.2022.838698",
+      "url": "https://doi.org/10.3389/fmicb.2022.838698"
+    },
+    {
+      "source_id": "KIM_2004",
+      "authors": "Kim et al.",
+      "year": 2004,
+      "title": "pTOC-KR: a positive selection cloning vector based on the ParE toxin.",
+      "doi": "10.2144/04361bm07",
+      "url": "https://doi.org/10.2144/04361bm07"
+    },
+    {
+      "source_id": "MOTOHASHI_2017",
+      "authors": "Motohashi",
+      "year": 2017,
+      "title": "Evaluation of the efficiency and utility of recombinant enzyme-free seamless DNA cloning methods.",
+      "doi": "10.1016/j.bbrep.2017.01.010",
+      "url": "https://doi.org/10.1016/j.bbrep.2017.01.010"
+    },
+    {
+      "source_id": "TANG_1994",
+      "authors": "Tang et al.",
+      "year": 1994,
+      "title": "The optimization of preparations of competent cells for transformation of E. coli.",
+      "doi": "10.1093/nar/22.14.2857",
+      "url": "https://doi.org/10.1093/nar/22.14.2857"
+    }
+  ],
+  "construction_notes": "Deterministic diagnostic observations are linked to action-specific source references, interpretations, evidence strengths, and biological caveats. Source inclusion does not imply direct support for every diagnostic action.",
+  "instance_notes": [
+    "This instance applies to a transformation where colonies are obtained and background/empty-vector colonies are a concern.",
+    "It is not appropriate for a pure zero-colonies phenotype."
+  ],
+  "action_evidence": [
+    {
+      "action_id": "D1",
+      "interpretation": "Transformation conditions, competent cells, and selection are broadly functional; the abnormal experimental outcome is more likely upstream of transformation itself.",
+      "evidence_strength": "strong_control",
+      "evidence_strength_description": "Strong as control, weak for specifically proving self-ligation",
+      "source_ids": [
+        "FISCHER_2018"
+      ],
+      "caveats": [
+        "Transformation efficiency is method-, strain-, and plasmid-dependent. This action cannot diagnose self-ligation alone."
+      ]
+    },
+    {
+      "action_id": "D2",
+      "interpretation": "Strongly increases support for self-ligated vector as the source of background colonies.",
+      "evidence_strength": "strong",
+      "evidence_strength_description": "Strong",
+      "source_ids": [
+        "FISCHER_2018"
+      ],
+      "caveats": [
+        "The supplied evidence attribution identifies Fischer et al. as supporting the no-insert control for self-ligation/background assessment.",
+        "The benchmark is vector-agnostic: encode colony growth rather than blue/white colour."
+      ]
+    },
+    {
+      "action_id": "D3",
+      "interpretation": "Supports empty/self-ligated vector rather than the desired recombinant construct.",
+      "evidence_strength": "moderate",
+      "evidence_strength_description": "Moderate",
+      "source_ids": [
+        "TROWER_2003",
+        "SANDHU_1989"
+      ],
+      "caveats": [
+        "The supplied evidence summary attributes to Consensus the assessment that colony PCR is the weakest-supported link in this specific causal chain. Do not treat it as uniquely diagnostic."
+      ]
+    },
+    {
+      "action_id": "D4",
+      "interpretation": "Strongly supports that recovered colonies contain empty/self-ligated vector rather than the intended construct.",
+      "evidence_strength": "moderate_strong",
+      "evidence_strength_description": "Moderate–strong",
+      "source_ids": [
+        "PETERSON_1998"
+      ],
+      "caveats": [
+        "The supplied evidence attribution identifies Peterson et al. as supporting restriction-based clone screening and identification of aberrant constructs."
+      ]
+    }
+  ],
+  "evidence_integration_notes": [
+    "D1 is mainly a rule-out/control action: it reduces support for transformation-system failure but does not establish self-ligation.",
+    "D2 provides the most direct evidence for vector background/self-ligation.",
+    "D3 and D4 confirm absence of the intended recombinant construct but may not uniquely distinguish self-ligation from every other empty-vector/background mechanism.",
+    "Reward combining evidence across actions rather than treating any single observation as an automatic answer."
+  ],
+  "leakage_controls": {
+    "synthetic_scenario": null,
+    "source_use_notes": "Keep the hidden state, accepted diagnosis, interpretations, evidence strengths, source list, and source material outside the evaluated agent interface. Only the selected experimental observation is returned.",
+    "source_lookup_policy": "blocked",
+    "checks": [
+      {
+        "check": "Restrict evaluated-agent access to public task/instructions and selected observations.",
+        "status": "planned",
+        "notes": "Restrict access through evaluator-controlled storage and the diagnostic interaction interface."
+      }
+    ]
+  },
+  "curation": {
+    "status": "draft",
+    "reviewer": null,
+    "reviewed_on": null,
+    "notes": ""
+  }
+}
