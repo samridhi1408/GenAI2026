@@ -9,3 +9,4 @@ evaluation/private/
 test_set/**
 !test_set/README.md
 .DS_Store
+generated/

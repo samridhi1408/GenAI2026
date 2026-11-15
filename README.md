@@ -17,6 +17,8 @@ test_set/                 Held-out benchmark records
 bioloopbench/             Session controller, validation, and logging utilities
 tests/                    Controller and validation tests
 docs/design.md            Record conventions
+bioloopbench/taskgen/      Automated task generation from STAR Protocols (docs/taskgen.md)
+configs/seed_topics.json  Seed topics for task generation
 ```
 
 ## Benchmark records
@@ -67,3 +69,7 @@ Submit JSON messages to select actions, revise ranked hypotheses after observati
 Hidden records, private simulator/evaluator data, held-out data, and local trajectories are ignored by Git by default. An evaluated agent receives public task files and selected observations through a restricted interface; private repository files remain accessible only to the curator/evaluator.
 
 See [record conventions](docs/design.md) for field semantics and validation coverage.
+
+## Automated task generation
+
+See [docs/taskgen.md](docs/taskgen.md) for the pipeline that builds interactive tasks from published troubleshooting sections.

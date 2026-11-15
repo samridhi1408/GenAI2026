@@ -1,0 +1,20 @@
+{
+  "topics": [
+    {"id": "cloning", "name": "Plasmid cloning and bacterial transformation",
+     "description": "Building plasmids by restriction-ligation, Gibson, Golden Gate or similar assembly, transforming E. coli, and screening colonies for the intended construct."},
+    {"id": "pcr", "name": "PCR and qPCR amplification",
+     "description": "End-point PCR, genotyping PCR, RT-qPCR and digital PCR: amplification failure, non-specific products, and abnormal quantification curves."},
+    {"id": "western", "name": "Western blot and protein detection",
+     "description": "SDS-PAGE, membrane transfer and immunoblot detection of proteins from lysates or pull-downs: missing, weak, unexpected or smeared bands and high background."},
+    {"id": "protein", "name": "Recombinant protein expression and purification",
+     "description": "Expressing recombinant proteins in bacteria, insect or mammalian cells and purifying them by affinity, ion-exchange or size-exclusion chromatography: low yield, insolubility, degradation, impurity."},
+    {"id": "crispr", "name": "CRISPR genome editing",
+     "description": "Cas9, base- or prime-editing of cultured cells or organisms, including guide delivery, knock-in by homology-directed repair, and genotyping of edited clones."},
+    {"id": "delivery", "name": "Transfection and viral transduction",
+     "description": "Delivering nucleic acids to cells by lipid transfection, electroporation or nucleofection, and producing and using lentiviral, retroviral or AAV vectors."},
+    {"id": "immunostaining", "name": "Immunofluorescence staining",
+     "description": "Antibody-based fluorescent staining of fixed cells, tissue sections or whole mounts and its imaging: absent or weak signal, high background, non-specific staining."},
+    {"id": "seqlib", "name": "Sequencing library preparation",
+     "description": "Preparing libraries for RNA-seq, single-cell sequencing, ATAC-seq, CUT&Tag, CUT&RUN or ChIP-seq, including tagmentation, amplification and library quality control."}
+  ]
+}
