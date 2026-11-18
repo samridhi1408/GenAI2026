@@ -1,0 +1,15 @@
+{
+  "models": {
+    "generator": "gemini:gemini-3.8-flash",
+    "auditor": "gemini:gemini-3.1-pro-preview",
+    "gatekeeper": "gemini:gemini-3.8-flash",
+    "judge": "gemini:gemini-3.1-pro-preview",
+    "solver": "gemini:gemini-3.8-flash"
+  },
+  "test_cutoff_date": "2026-07-01",
+  "dev_articles_per_topic": 16,
+  "test_articles_per_topic": 12,
+  "question_budget": 6,
+  "symptom_only_samples": 3,
+  "max_cost_usd": 8
+}

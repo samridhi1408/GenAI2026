@@ -37,7 +37,10 @@ def search(phrases, date_from=None, date_to=None, limit=1000):
             {"query": query, "format": "json", "pageSize": 1000, "cursorMark": cursor, "resultType": "lite"})
         d = json.loads(_get(url))
         rows = d.get("resultList", {}).get("result", [])
-        out += [{"pmcid": r["pmcid"], "date": r.get("firstPublicationDate", ""), "title": r.get("title", "")}
+        out += [{"pmcid": r["pmcid"], "date": r.get("firstPublicationDate", ""), "title": r.get("title", ""),
+                 "pmid": r.get("pmid", ""), "doi": r.get("doi", ""), "pub_year": r.get("pubYear", ""),
+                 "first_publication_date": r.get("firstPublicationDate", ""),
+                 "first_index_date": r.get("firstIndexDate", ""), "journal": r.get("journalTitle", "")}
                 for r in rows if r.get("pmcid")]
         nxt = d.get("nextCursorMark")
         if not rows or not nxt or nxt == cursor:
@@ -65,12 +68,19 @@ def _title(sec):
 
 def _body_text(sec):
     """Section text with one line per paragraph, list item or sub-heading."""
+    # Step numbers live in <label> children of list items, not in the paragraph
+    # text; keep them, because troubleshooting entries refer to steps by number.
+    labels = {}
+    for item in sec.iter("list-item"):
+        label, first = item.find("label"), item.find("p")
+        if label is not None and first is not None and _text(label):
+            labels[first] = _text(label)
     lines = []
     for el in sec.iter():
         if el.tag == "title":
             lines.append(f"## {_text(el)}")
         elif el.tag == "p":
-            lines.append(_text(el))
+            lines.append(f"{labels[el]} {_text(el)}" if el in labels else _text(el))
     seen, out = set(), []
     for line in lines:  # nested <p> inside list items repeat; keep the first
         if line and line not in seen:
@@ -94,6 +104,17 @@ def parse_article(path: Path):
         if pd.findtext("year"):
             dates.append("%s-%02d-%02d" % (pd.findtext("year"), int(pd.findtext("month") or 12), int(pd.findtext("day") or 28)))
     date = min(dates) if dates else ""
+    # Every date the article states, as written (a missing month or day stays
+    # missing), so later analyses can split on whichever date they prefer.
+    def _raw(el):
+        return "-".join(x.zfill(2) for x in (el.findtext("year"), el.findtext("month"), el.findtext("day")) if x)
+    pub_dates = {}
+    for pd in meta.findall("pub-date"):
+        if pd.findtext("year"):
+            pub_dates[pd.get("pub-type") or pd.get("date-type") or "unspecified"] = _raw(pd)
+    history = {d.get("date-type") or "unspecified": _raw(d) for d in meta.findall(".//history/date") if d.findtext("year")}
+    journal = root.findtext(".//journal-meta//journal-title") or ""
+    volume, issue = meta.findtext("volume") or "", meta.findtext("issue") or ""
     abstract = " ".join(_text(a) for a in meta.findall("abstract"))
     body = root.find(".//body")
     sections, trouble = [], None
@@ -116,7 +137,9 @@ def parse_article(path: Path):
         if not entries:
             entries = [{"index": 1, "heading": "Troubleshooting", "text": _body_text(trouble)}]
     return {"pmcid": ids.get("pmcid") or path.stem, "doi": ids.get("doi", ""), "title": title, "date": date,
-            "abstract": abstract, "sections": sections, "troubleshooting": entries}
+            "abstract": abstract, "sections": sections, "troubleshooting": entries,
+            "pmid": ids.get("pmid", ""), "pub_dates": pub_dates, "history_dates": history, "journal": journal,
+            "volume": volume, "issue": issue}
 
 
 def protocol_text(article, max_chars=60000):

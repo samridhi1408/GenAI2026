@@ -2,7 +2,8 @@
 
 A model is named ``provider:model_id``:
 
-  gemini:<id>      Google Generative Language REST API (GEMINI_API_KEY)
+  gemini:<id>      Google Generative Language REST API (GEMINI_API_KEY; refused
+                   after GEMINI_KEY_STOP_AFTER, see docs/api-keys.md)
   anthropic:<id>   Anthropic SDK (credentials resolved by the SDK)
   openai:<id>      Any OpenAI-compatible chat-completions endpoint
                    (OPENAI_API_KEY, OPENAI_BASE_URL; e.g. a local vLLM server)
@@ -63,7 +64,7 @@ def _count(model, calls=0, cached=0, input_tokens=0, output_tokens=0, cost=0.0):
         u["cost_usd"] += cost or 0.0
 
 
-def _post(url, body, headers, timeout=300, retries=5):
+def _post(url, body, headers, timeout=300, retries=8):
     data = json.dumps(body).encode()
     for attempt in range(retries):
         req = urllib.request.Request(url, data=data, headers={"Content-Type": "application/json", **headers})
@@ -83,7 +84,19 @@ def _post(url, body, headers, timeout=300, retries=5):
     raise LLMError("request failed after retries")
 
 
+# STOP using the current GEMINI_API_KEY after this date: its credits expire.
+# See docs/api-keys.md. Change this (or set the environment variable of the same
+# name) only when the key has been replaced.
+GEMINI_KEY_STOP_AFTER = "2026-11-19"
+
+
 def _gemini(model, system, messages, max_tokens):
+    stop = os.environ.get("GEMINI_KEY_STOP_AFTER", GEMINI_KEY_STOP_AFTER)
+    # Compared in UTC, which is ahead of US time zones, so the key is dropped
+    # early rather than late whichever zone the credit expiry is counted in.
+    if stop and time.strftime("%Y-%m-%d", time.gmtime()) > stop:
+        raise LLMError(f"the Gemini key must not be used after {stop} (docs/api-keys.md); "
+                       "switch this role to openrouter:google/<model>")
     key = os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY")
     if not key:
         raise LLMError("GEMINI_API_KEY is not set")
