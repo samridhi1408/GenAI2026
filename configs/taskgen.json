@@ -1,0 +1,13 @@
+{
+  "models": {
+    "generator": "openrouter:anthropic/claude-sonnet-5.5",
+    "auditor": "openrouter:google/gemini-3.1-pro-preview",
+    "gatekeeper": "openrouter:google/gemini-3.8-flash",
+    "judge": "openrouter:anthropic/claude-sonnet-5.5",
+    "solver": "openrouter:openai/gpt-5.6-terra"
+  },
+  "test_cutoff_date": "2026-07-01",
+  "dev_articles_per_topic": 16,
+  "test_articles_per_topic": 12,
+  "max_cost_usd": 8
+}
